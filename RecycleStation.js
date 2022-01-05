@@ -5,7 +5,7 @@ class RecycleStation {
         this.__phone = phone;
         this.__adress = adress;
         this.__isOpen = false;
-        this.__recycles = null;
+        this.__recycles = [];
         this.__recycleShop = null;
     }
 
@@ -50,11 +50,11 @@ class RecycleStation {
         this.__recycleShop = recycleShop;
     }
 
-    makeGoods () {
+    makeGoods () { /////doesnt work
         for (let recycle of this.__recycles) {
-            switch (recycle.getName().toLowerCase()) {
+            switch (recycle.name.toLowerCase()) {
                 case 'plastic':
-                    if (recycle.getRecyclingCount() < 4) {
+                    if (recycle.recyclingCount < 4) {
                         this.__recycleShop.addGoods(`clothes${this.__recycles.indexOf(recycle)}`);
                     };
                     break;
@@ -62,12 +62,12 @@ class RecycleStation {
                     this.__recycleShop.addGoods(`tableware${this.__recycles.indexOf(recycle)}`);
                     break;
                 case 'paper':
-                    if (recycle.getRecyclingCount() < 7) {
+                    if (recycle.recyclingCount < 7) {
                         this.__recycleShop.addGoods(`notebook${this.__recycles.indexOf(recycle)}`);
                     };
                 break;
                 default: 
-                    return `${recycle.getColor()} ${recycle.getName()} cannot be recycle. Burn it.`;
+                    return `${recycle.color} ${recycle.name} cannot be recycle. Burn it.`;
             }
         };
 

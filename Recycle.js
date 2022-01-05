@@ -1,9 +1,9 @@
 'use strict';
 
 class Recycle {
-    constructor (recyclingCount, name) {
-        this._recyclingCount = recyclingCount;
+    constructor (name, recyclingCount) {
         this._name = name;
+        this._recyclingCount = recyclingCount;
     }
 
     get name () {

@@ -1,6 +1,6 @@
 'use strict';
 
-class Plastic {
+class Plastic extends Recycle {
     constructor (name, recyclingCount, weight, color) {
         super (name, recyclingCount);
         this.__weight = weight;

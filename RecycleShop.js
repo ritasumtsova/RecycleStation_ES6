@@ -24,18 +24,13 @@ class RecycleShop {
 
     // async addGoodsAsync (goods) {
     //     setTimeout( () => {
-    //         let error;
-    //         let data;
-
     //         if (this.__goods.length < 3) {
     //             this.__goods.push(goods);
-    //             data = this.getGoods();
+    //             await Promise.resolve(console.log(this.getGoods()));
     //         } else {
-    //             error = new Error('The storage is full')
-    //         }
-                
-    //         callback(error, data);            
-    //     })
+    //             await Promise.reject(new Error('The storage is full'));
+    //         }           
+    //     }, 3000)
     // }
 
     buyGoods (goods) {
