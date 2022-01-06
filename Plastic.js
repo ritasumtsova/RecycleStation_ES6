@@ -1,25 +1,28 @@
 'use strict';
 
 class Plastic extends Recycle {
+    #weight;
+    #color;
+
     constructor (name, recyclingCount, weight, color) {
         super (name, recyclingCount);
-        this.__weight = weight;
-        this.__color = color;
+        this.#weight = weight;
+        this.#color = color;
     }
 
     get weight () {
-        return this.__weight;
+        return this.#weight;
     }
 
     set weight (weight) {
-        this.__weight = weight;
+        this.#weight = weight;
     }
 
     get color () {
-        return this.__color;
+        return this.#color;
     }
 
     set color (color) {
-        this.__color = color;
+        this.#color = color;
     }
 };

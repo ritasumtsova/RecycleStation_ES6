@@ -10,8 +10,8 @@ const recycleStation = new RecycleStation('+380505005050', 'Kharkiv');
 const user = new User('+380939009090');
 
 //console.log(recycle);
-recycleShop.addGoods('table');
-recycleShop.addGoods('glasses');
+//recycleShop.addGoods('table');
+//recycleShop.addGoods('glasses');
 console.log(recycleShop.goods);
 
 recycleStation.recycleShop = recycleShop;
@@ -19,7 +19,7 @@ recycleStation.changeIsOpen();
 recycleStation.addRecycle(greenPlastic);
 recycleStation.addRecycle(yellowPlastic);
 
-console.log(recycleStation.makeGoods());
+//console.log(recycleStation.makeGoods());
 console.log(recycleShop.goods);
 
 console.log(recycleShop.addGoodsAsync('async glasses'));

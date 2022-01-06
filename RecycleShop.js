@@ -1,33 +1,35 @@
 'use strict';
 
 class RecycleShop {
-    constructor (phone, goods = []) {
-        this.__phone = phone;
-        this.__goods = goods;
+    #phone;
+    #goods;
+    constructor (phone) {
+        this.#phone = phone;
+        this.#goods = [];
     }
 
     get phone () {
-        return this.__phone;
+        return this.#phone;
     }
 
     set phone (phone) {
-        this.__phone = phone;
+        this.#phone = phone;
     }
 
     get goods () {
-        return this.__goods;
+        return this.#goods;
     }
 
     addGoods (goods) {
-        this.__goods.push(goods);
+        this.#goods.push(goods);
     }
 
     addGoodsAsync (goods) {
         const promise = () => new Promise(resolve => { 
             setTimeout(
                 () => {
-                    if(this.__goods.length < 3) {
-                        this.__goods.push(goods);
+                    if(this.#goods.length < 3) {
+                        this.#goods.push(goods);
                         resolve(this.goods);
                     } else {
                         resolve(new Error('The storage is full'));
@@ -46,10 +48,10 @@ class RecycleShop {
     buyGoods (goods) {
         let purchase;
 
-        this.__goods.find( good => {
+        this.#goods.find( good => {
             if (good === goods) {
                 purchase = goods;
-                this.__goods.splice(this.__goods.indexOf(good), 1);
+                this.#goods.splice(this.#goods.indexOf(good), 1);
            }
        });
 

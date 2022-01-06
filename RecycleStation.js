@@ -1,45 +1,50 @@
 'use strict';
 
 class RecycleStation {
+    #phone;
+    #adress;
+    #isOpen;
+    #recycles;
+    #recycleShop;
     constructor (phone, adress) {
-        this.__phone = phone;
-        this.__adress = adress;
-        this.__isOpen = false;
-        this.__recycles = [];
-        this.__recycleShop = null;
+        this.#phone = phone;
+        this.#adress = adress;
+        this.#isOpen = false;
+        this.#recycles = [];
+        this.#recycleShop = null;
     }
 
     get phone () {
-        return this.__phone;
+        return this.#phone;
     }
 
     set phone (phone) {
-        this.__phone = phone;
+        this.#phone = phone;
     }
 
     get adress () {
-        return this.__adress;
+        return this.#adress;
     }
 
     set adress (adress) {
-        this.__adress = adress;
+        this.#adress = adress;
     }
 
     get isOpen () {
-        return this.__isOpen;
+        return this.#isOpen;
     }
 
     changeIsOpen () {
-        this.__isOpen = !this.__isOpen;
+        this.#isOpen = !this.#isOpen;
     }
 
     get recycles () {
-        return this.__recycles;
+        return this.#recycles;
     }
 
     addRecycle (recycle) {
-        if (this.__isOpen) {
-            this.__recycles.push(recycle);
+        if (this.#isOpen) {
+            this.#recycles.push(recycle);
             return true;
         } else {
             return false;
@@ -47,24 +52,24 @@ class RecycleStation {
     }
 
     set recycleShop (recycleShop) {
-        this.__recycleShop = recycleShop;
+        this.#recycleShop = recycleShop;
     }
 
     makeGoods () {
-        if(this.__recycles.length > 0) {
-            for (let recycle of this.__recycles) {
+        if(this.#recycles.length > 0) {
+            for (let recycle of this.#recycles) {
                 switch (recycle.name.toLowerCase()) {
                     case 'plastic':
                         if (recycle.recyclingCount < 4) {
-                            this.__recycleShop.addGoods(`clothes${this.__recycles.indexOf(recycle)}`);
+                            this.#recycleShop.addGoods(`clothes${this.#recycles.indexOf(recycle)}`);
                         };
                         break;
                     case 'glass':
-                        this.__recycleShop.addGoods(`tableware${this.__recycles.indexOf(recycle)}`);
+                        this.#recycleShop.addGoods(`tableware${this.#recycles.indexOf(recycle)}`);
                         break;
                     case 'paper':
                         if (recycle.recyclingCount < 7) {
-                            this.__recycleShop.addGoods(`notebook${this.__recycles.indexOf(recycle)}`);
+                            this.#recycleShop.addGoods(`notebook${this.#recycles.indexOf(recycle)}`);
                         };
                     break;
                     default: 
