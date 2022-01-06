@@ -50,27 +50,31 @@ class RecycleStation {
         this.__recycleShop = recycleShop;
     }
 
-    makeGoods () { /////doesnt work
-        for (let recycle of this.__recycles) {
-            switch (recycle.name.toLowerCase()) {
-                case 'plastic':
-                    if (recycle.recyclingCount < 4) {
-                        this.__recycleShop.addGoods(`clothes${this.__recycles.indexOf(recycle)}`);
-                    };
+    makeGoods () {
+        if(this.__recycles.length > 0) {
+            for (let recycle of this.__recycles) {
+                switch (recycle.name.toLowerCase()) {
+                    case 'plastic':
+                        if (recycle.recyclingCount < 4) {
+                            this.__recycleShop.addGoods(`clothes${this.__recycles.indexOf(recycle)}`);
+                        };
+                        break;
+                    case 'glass':
+                        this.__recycleShop.addGoods(`tableware${this.__recycles.indexOf(recycle)}`);
+                        break;
+                    case 'paper':
+                        if (recycle.recyclingCount < 7) {
+                            this.__recycleShop.addGoods(`notebook${this.__recycles.indexOf(recycle)}`);
+                        };
                     break;
-                case 'glass':
-                    this.__recycleShop.addGoods(`tableware${this.__recycles.indexOf(recycle)}`);
-                    break;
-                case 'paper':
-                    if (recycle.recyclingCount < 7) {
-                        this.__recycleShop.addGoods(`notebook${this.__recycles.indexOf(recycle)}`);
-                    };
-                break;
-                default: 
-                    return `${recycle.color} ${recycle.name} cannot be recycle. Burn it.`;
-            }
-        };
-
-        this.__recycles = [];
+                    default: 
+                        return `${recycle.color} ${recycle.name} cannot be recycle. Burn it.`;
+                }
+            };
+    
+            this.__recycles = [];
+        } else {
+            return 'Recycle station has no recycles to make the goods.'
+        }
     }
 };
