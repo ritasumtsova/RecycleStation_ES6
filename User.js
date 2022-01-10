@@ -82,4 +82,4 @@ class User {
     set recycleShop (recycleShop) {
         this.#recycleShop = recycleShop;
     }
-};
+}

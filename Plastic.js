@@ -25,4 +25,4 @@ class Plastic extends Recycle {
     set color (color) {
         this.#color = color;
     }
-};
+}

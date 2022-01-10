@@ -22,39 +22,58 @@ class RecycleShop {
     }
 
     addGoods (goods) {
-        this.#goods.push(goods);
+        if (this.#goods.length < 3) {
+            this.#goods.push(goods);
+        } else {
+            new Error('The storage is full');
+        }
     }
 
-    addGoodsAsync (goods) {
-        const promise = () => new Promise(resolve => { 
-            setTimeout(
-                () => {
-                    if(this.#goods.length < 3) {
-                        this.#goods.push(goods);
-                        resolve(this.goods);
-                    } else {
-                        resolve(new Error('The storage is full'));
-                    }
-                }, 3000
-            );
+    addGoodsCallback (goods, callback) {
+        setTimeout(
+            function () {
+              let error;
+              let data;
+      
+              if (this.#goods.length < 3) {
+                  this.#goods.push(goods);
+                  data = this.#goods;
+              } else {
+                  error = new Error('The storage is full')
+              }
+      
+              callback(error, data);
+            }.bind(this), 3000
+          );
+    }
+
+    addGoodsPromise (goods) {
+        return new Promise((resolve, reject) => { 
+            setTimeout(() => {
+                if(this.#goods.length < 3) {
+                    this.#goods.push(goods);
+                    resolve(this.#goods);
+                } else {
+                    reject(new Error('The storage is full'));
+                }
+            }, 3000);
         });
 
-        const addGoods = async () => {
-            const data = await promise();
-            console.log(data);
-        };
-        addGoods();
+        // const addGoods = async () => {
+        //     const data = await promise();
+        //     console.log(data);
+        // };
+        // addGoods();
     }
 
     buyGoods (goods) {
         let purchase;
 
-        this.#goods.find( good => {
-            if (good === goods) {
-                purchase = goods;
-                this.#goods.splice(this.#goods.indexOf(good), 1);
-           }
-       });
+        this.#goods.findIndex( good => {
+            good === goods;
+            purchase = goods;
+            this.#goods.splice(this.#goods.indexOf(good), 1);
+        });
 
         if (purchase) {
             return purchase;
@@ -62,4 +81,4 @@ class RecycleShop {
             return null;
         }
     }
-};
+}

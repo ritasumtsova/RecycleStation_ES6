@@ -83,4 +83,4 @@ class RecycleStation {
             return 'Recycle station has no recycles to make the goods.'
         }
     }
-};
+}

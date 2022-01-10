@@ -9,17 +9,55 @@ const recycleShop = new RecycleShop('+380939009393');
 const recycleStation = new RecycleStation('+380505005050', 'Kharkiv');
 const user = new User('+380939009090');
 
-//console.log(recycle);
-//recycleShop.addGoods('table');
-//recycleShop.addGoods('glasses');
-console.log(recycleShop.goods);
+//recycleShop.addGoods('t-shirt');
 
-recycleStation.recycleShop = recycleShop;
-recycleStation.changeIsOpen();
-recycleStation.addRecycle(greenPlastic);
-recycleStation.addRecycle(yellowPlastic);
+// CALLBACK INVOKE
+// recycleShop.addGoodsCallback('async table 1', (error, data) => {
+//     if (error) {
+//         console.error(error);
+//     } else {
+//         console.log(data);
+//         recycleShop.addGoodsCallback('async table 2', (error, data) => {
+//             if (error) {
+//                 console.error(error);
+//             } else {
+//                 console.log(data);
+//                 recycleShop.addGoodsCallback('async table 3', (error, data) => {
+//                     if (error) {
+//                         console.error(error);
+//                     } else {
+//                         console.log(data);
+//                     }
+//                 });
+//             }
+//         });
+//     }
+// });
 
-//console.log(recycleStation.makeGoods());
-console.log(recycleShop.goods);
+// THEN CATCH INVOKE
+// recycleShop.addGoodsPromise('async glasses 1')
+//         .then(data => {
+//             console.log(data);
+//             return recycleShop.addGoodsPromise('async glasses 2');
+//         })
+//         .then(data => {
+//             console.log(data);
+//             return recycleShop.addGoodsPromise('async glasses 3');
+//         })
+//         .then(data => console.log(data))
+//         .catch(error => console.error(error))
 
-console.log(recycleShop.addGoodsAsync('async glasses'));
+// ASYNC AWAIT INVOKE
+const addGoodsAsyncAwait = async (goods1, goods2, goods3) => {
+    try {
+        const data1 = await recycleShop.addGoodsPromise('async soap 1');
+        console.log(data1);
+        const data2 = await recycleShop.addGoodsPromise('async soap 2');
+        console.log(data2);
+        const data3 = await recycleShop.addGoodsPromise('async soap 3');
+        console.log(data3);
+    } catch (error) {
+        console.error(error);
+    }
+};
+addGoodsAsyncAwait();

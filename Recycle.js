@@ -21,4 +21,4 @@ class Recycle {
     set recyclingCount (recyclingCount) {
         this._recyclingCount = recyclingCount;
     }
-};
+}
