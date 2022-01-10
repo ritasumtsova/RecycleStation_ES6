@@ -22,7 +22,7 @@ class User {
     }
 
     set name (name) {
-        this.#name = name;
+        this.#name = name.trim();
     }
 
     get phone () {

@@ -4,9 +4,9 @@ class Plastic extends Recycle {
     #weight;
     #color;
 
-    constructor (name, recyclingCount, weight, color) {
+    constructor (name, recyclingCount, color) {
         super (name, recyclingCount);
-        this.#weight = weight;
+        this.#weight = 0;
         this.#color = color;
     }
 

@@ -3,6 +3,7 @@
 class RecycleShop {
     #phone;
     #goods;
+    
     constructor (phone) {
         this.#phone = phone;
         this.#goods = [];

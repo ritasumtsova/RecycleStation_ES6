@@ -6,6 +6,7 @@ class RecycleStation {
     #isOpen;
     #recycles;
     #recycleShop;
+    
     constructor (phone, adress) {
         this.#phone = phone;
         this.#adress = adress;
