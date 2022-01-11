@@ -61,16 +61,10 @@ class RecycleShop {
     }
 
     buyGoods (goods) {
-        let purchase;
-
-        this.#goods.findIndex((good, index) => {
-            if (good === goods) {
-                this.#goods.splice(index, 1);
-                purchase = goods;
-            }
-        });
+        const purchase = this.#goods.find(good => good === goods);
 
         if (purchase) {
+            this.#goods.splice(this.#goods.indexOf(purchase), 1);
             return purchase;
         } else {
             return null;
