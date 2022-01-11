@@ -58,22 +58,19 @@ class RecycleShop {
                 }
             }, 3000);
         });
-
-        // const addGoods = async () => {
-        //     const data = await promise();
-        //     console.log(data);
-        // };
-        // addGoods();
     }
 
     buyGoods (goods) {
         let purchase;
 
-        this.#goods.findIndex( good => {
-            good === goods;
-            purchase = goods;
-            this.#goods.splice(this.#goods.indexOf(good), 1);
-        });
+        this.#goods.findIndex((good, index) => {
+            if (good === goods) {
+                this.#goods.splice(index, 1);
+                purchase = goods;
+            } else {
+                return null;
+            }
+        })
 
         if (purchase) {
             return purchase;
