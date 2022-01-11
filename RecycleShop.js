@@ -67,10 +67,8 @@ class RecycleShop {
             if (good === goods) {
                 this.#goods.splice(index, 1);
                 purchase = goods;
-            } else {
-                return null;
             }
-        })
+        });
 
         if (purchase) {
             return purchase;
